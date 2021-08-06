@@ -1,0 +1,46 @@
+<snippet>
+	<content><![CDATA[
+// prints prime numbers less than equal to n
+void primeSieve(int n){
+
+    //creating a vector for n digits and marking every number as non prime in the begining
+    vector <bool> a(n+1,0);
+
+    //marking odd numbers as 1 in the begining
+    for (int i = 3; i <=n; i+=2)
+    {
+        a[i]=1;
+    }
+
+    //iterating odd numbers marked as 1 till i^2<=n (note : every number has at least 1 divisor which is less than sqrt(n))
+    for (int i = 3; i*i <=n; i+=2)
+    {
+        if(a[i]){
+
+            //marking multiples of prime numbers as non prime from i*i to less than n since numbers less than i^2 will have at least 1 //divisor that is less than sqrt(n)
+            for (int j = i*i; j <=n; j+=i)
+            {
+                a[j]=0;
+            }
+        }
+    }
+
+    a[0]=0;
+    a[1]=0;
+    a[2]=1;
+
+    //printing prime numbers
+    for (int i = 1; i <= n; ++i)
+    {
+        if(a[i]){
+            cout<<i<<endl;
+        }
+    }
+
+}
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>sieve</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>

@@ -1,0 +1,37 @@
+<snippet>
+	<content><![CDATA[
+// better approach is pre computing primes using sieve and iterating over them only
+void primeFactors(int n){
+
+    // if 2 is a factor of n, then printing all the factors
+    while(n%2==0){
+        n/=2;
+        cout<<2<<endl;
+    }
+
+    // loop till sqrt(n) because composite numbers have atleast 1 factor less than the square root of n
+    for (int i = 3; i <= sqrt(n); i+=2)
+    {
+        if(n%i==0){
+
+            // this loop removes all occurrences of i from n
+            while(n%i==0){
+                n/=i;
+
+                cout<<i<<endl;
+            }
+        }
+    }
+
+    // if a number is still greater than 1 then it means it is a prime greater than 2
+    if(n>1){
+        cout<<n<<endl;
+    } 
+}  
+
+]]></content>
+	<!-- Optional: Set a tabTrigger to define how to trigger the snippet -->
+	<tabTrigger>primefactors</tabTrigger>
+	<!-- Optional: Set a scope to limit where the snippet will trigger -->
+	<!-- <scope>source.python</scope> -->
+</snippet>
